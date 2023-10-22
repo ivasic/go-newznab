@@ -105,7 +105,6 @@ func (c Client) SearchSeasonWithTVDB(categories []int, tvDBID int, season int) (
 		"tvdbid":  []string{strconv.Itoa(tvDBID)},
 		"cat":     c.splitCats(categories),
 		"season":  []string{strconv.Itoa(season)},
-		"ep": []string{strconv.Itoa(episode)},
 		"t":       []string{"tvsearch"},
 	})
 }
