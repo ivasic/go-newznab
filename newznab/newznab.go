@@ -99,6 +99,17 @@ func (c Client) SearchWithTVDB(categories []int, tvDBID int, season int, episode
 	})
 }
 
+// SearchWithTVDB returns NZBs for the given parameters
+func (c Client) SearchSeasonWithTVDB(categories []int, tvDBID int, season int) ([]NZB, error) {
+	return c.search(url.Values{
+		"tvdbid":  []string{strconv.Itoa(tvDBID)},
+		"cat":     c.splitCats(categories),
+		"season":  []string{strconv.Itoa(season)},
+		"ep": []string{strconv.Itoa(episode)},
+		"t":       []string{"tvsearch"},
+	})
+}
+
 // SearchWithTVMaze returns NZBs for the given parameters
 func (c Client) SearchWithTVMaze(categories []int, tvMazeID int, season int, episode int) ([]NZB, error) {
 	return c.search(url.Values{
